@@ -148,14 +148,6 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        {/* <NavBar> */}
-        {/* <HeaderLink to="/"> */}
-        {/* <FormattedMessage {...messages.home} /> */}
-        {/* </HeaderLink> */}
-        {/* <HeaderLink to="/features"> */}
-        {/* <FormattedMessage {...messages.features} /> */}
-        {/* </HeaderLink> */}
-        {/* </NavBar> */}
         <div className="content-section implementation">
           <Menubar model={this.state.items}>
             <InputText placeholder="Search" type="text" />
