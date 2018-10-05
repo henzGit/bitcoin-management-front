@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 
 /* eslint-disable react/prefer-stateless-function */
 class Header extends React.Component {
@@ -127,13 +126,6 @@ class Header extends React.Component {
             },
           ],
         },
-        {
-          separator: false,
-        },
-        {
-          label: 'Quit',
-          icon: 'pi pi-fw pi-power-off',
-        },
       ],
     };
   }
@@ -143,7 +135,6 @@ class Header extends React.Component {
       <div>
         <div className="content-section implementation">
           <Menubar model={this.state.items}>
-            <InputText placeholder="Search" type="text" />
             <Button
               label="Logout"
               icon="pi pi-power-off"
