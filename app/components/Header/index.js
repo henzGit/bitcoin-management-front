@@ -10,6 +10,10 @@ class Header extends React.Component {
     this.state = {
       items: [
         {
+          label: 'Home',
+          icon: 'pi pi-fw pi-home',
+        },
+        {
           label: 'File',
           icon: 'pi pi-fw pi-file',
           items: [
