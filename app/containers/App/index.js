@@ -36,7 +36,7 @@ export default function App() {
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="Front end for bitcoin management platform" />
       </Helmet>
       <Header />
       <Switch>

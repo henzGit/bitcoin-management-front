@@ -52,7 +52,7 @@ export class HomePage extends React.PureComponent {
           <title>Home Page</title>
           <meta
             name="description"
-            content="A React.js Boilerplate application homepage"
+            content="Homepage for bitcoin management platform"
           />
         </Helmet>
         <div>
@@ -77,7 +77,7 @@ export class HomePage extends React.PureComponent {
                 <Input
                   id="username"
                   type="text"
-                  placeholder="henz"
+                  placeholder="henzGit"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
                 />
