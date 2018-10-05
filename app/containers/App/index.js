@@ -17,6 +17,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import TestPage from 'containers/TestPage/Loadable';
+import AuthPage from 'containers/AuthPage/Loadable';
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -46,6 +47,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/test" component={TestPage} />
+        <Route path="/auth" component={AuthPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
