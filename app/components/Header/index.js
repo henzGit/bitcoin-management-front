@@ -12,6 +12,7 @@ class Header extends React.Component {
         {
           label: 'Home',
           icon: 'pi pi-fw pi-home',
+          url: '/'
         },
         {
           label: 'File',
