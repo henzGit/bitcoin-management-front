@@ -30,23 +30,26 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const PublicLayout = () => <div>
-  <Switch>
-    <Route path="/test" component={TestPage} />
-    <Route path="/auth" component={AuthPage} />
-    <Route path="" component={NotFoundPage} />
-  </Switch>
-</div>
+export const PublicLayout = () => (
+  <div>
+    <Switch>
+      <Route path="/test" component={TestPage} />
+      <Route path="/auth" component={AuthPage} />
+      <Route path="" component={NotFoundPage} />
+    </Switch>
+  </div>
+);
 
-export const ProtectedLayout = () => <div>
-  <Header />
-  <Switch>
-    <Route exact path="/app/" component={HomePage} />
-    <Route path="/app/features" component={FeaturePage} />
-  </Switch>
-  <Footer />
-</div>
-
+export const ProtectedLayout = () => (
+  <div>
+    <Header />
+    <Switch>
+      <Route exact path="/app/" component={HomePage} />
+      <Route path="/app/features" component={FeaturePage} />
+    </Switch>
+    <Footer />
+  </div>
+);
 
 export default function App() {
   return (
@@ -62,8 +65,8 @@ export default function App() {
       </Helmet>
 
       <Switch>
-        <Route path='/app' component={ProtectedLayout} />
-        <Route path='/' component={PublicLayout} />
+        <Route path="/app" component={ProtectedLayout} />
+        <Route path="/" component={PublicLayout} />
       </Switch>
     </AppWrapper>
   );
