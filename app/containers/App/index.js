@@ -30,6 +30,24 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
+export const PublicLayout = () => <div>
+  <Switch>
+    <Route path="/test" component={TestPage} />
+    <Route path="/auth" component={AuthPage} />
+    <Route path="" component={NotFoundPage} />
+  </Switch>
+</div>
+
+export const ProtectedLayout = () => <div>
+  <Header />
+  <Switch>
+    <Route exact path="/app/" component={HomePage} />
+    <Route path="/app/features" component={FeaturePage} />
+  </Switch>
+  <Footer />
+</div>
+
+
 export default function App() {
   return (
     <AppWrapper>
@@ -42,15 +60,11 @@ export default function App() {
           content="Front end for bitcoin management platform"
         />
       </Helmet>
-      <Header />
+
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="/test" component={TestPage} />
-        <Route path="/auth" component={AuthPage} />
-        <Route path="" component={NotFoundPage} />
+        <Route path='/app' component={ProtectedLayout} />
+        <Route path='/' component={PublicLayout} />
       </Switch>
-      <Footer />
     </AppWrapper>
   );
 }
