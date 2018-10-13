@@ -4,7 +4,10 @@
  *
  */
 import {
-  AUTHENTICATE, AUTHENTICATION_SUCCESS, AUTHENTICATION_ERROR
+  AUTHENTICATE,
+  AUTHENTICATION_SUCCESS,
+  AUTHENTICATION_ERROR,
+  REDIRECT_TO_HOME
 } from './constants';
 import { CHANGE_USERNAME, CHANGE_PASSWORD } from './constants';
 
@@ -80,3 +83,14 @@ export function changePassword(password) {
     password,
   };
 }
+
+/**
+ * Dispatched when authentication is successful
+ *
+ * @return {object}
+ *  An action object with a type of REDIRECT_TO_HOME
+ */
+export function redirectToHome() {
+  return { type: REDIRECT_TO_HOME };
+}
+
