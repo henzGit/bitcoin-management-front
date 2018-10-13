@@ -17,7 +17,8 @@ import { UPDATE_USER_DATA } from "./constants";
 const initialState = fromJS({
   isAuthenticated: false,
   userId: null,
-  cookie: ''
+  cookie: '',
+  currentUserName: ''
 });
 
 function appReducer(state = initialState, action) {
@@ -26,7 +27,8 @@ function appReducer(state = initialState, action) {
       return state
         .set('isAuthenticated', action.isAuthenticated)
         .set('userId', action.userId)
-        .set('cookie', action.cookie);
+        .set('cookie', action.cookie)
+        .set('currentUserName', action.currentUserName);
     default:
       return state;
   }

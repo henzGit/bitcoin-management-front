@@ -27,7 +27,7 @@ export function* callAuthApi() {
     // Call our request helper (see 'utils/request')
     const response = yield call(request, requestURL);
     yield put(authenticationSuccess());
-    yield put(updateUserData(true, 1, 'test_cookie'));
+    yield put(updateUserData(true, 1, 'test_cookie', 'henz great'));
     yield put(push('/app'));
   } catch (err) {
     yield put(authenticationError(err));
