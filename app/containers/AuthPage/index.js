@@ -1,25 +1,29 @@
 /*
- * FeaturePage
+ * AuthPage
  *
- * List all the features
+ * Used for user authentication
  */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import {Button} from 'primereact/button';
+import { Button } from 'primereact/button';
+import { changeUsername, changePassword, authenticate } from './actions';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import {
+  makeSelectUsername,
+  makeSelectPassword,
+  makeSelectAuthenticating,
+  makeSelectError
+} from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 
-export default class AuthPage extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
-  // Since state and props are static,
-  // there's no need to re-render this component
-  constructor() {
-    super();
-    this.state = {
-      userName: '',
-      password: ''
-    };
-  }
-
+export class AuthPage extends React.Component {
   render() {
     return (
       <div>
@@ -34,17 +38,63 @@ export default class AuthPage extends React.Component {
             className="p-grid"
             style={{ width: '250px', marginBottom: '10px' }}
           >
-            <h3 className="first">Username</h3>
-            <InputText value={this.state.userName}
-                       onChange={(e) => this.setState({userName: e.target.value})} />
-            <h3 className="first">Password</h3>
-            <Password onChange={(e) => this.setState({password: e.target.value})}/>
-            <h3></h3>
-            <Button label="Login" />
-
+            <form >
+              <h3 className="first">Username</h3>
+              <InputText
+                value={this.props.username}
+                onChange={this.props.onChangeUsername}
+              />
+              <h3 className="first">Password</h3>
+              <Password
+                feedback={false}
+                onChange={this.props.onChangePassword}
+              />
+              <h3></h3>
+              <Button label="Login" onClick={this.props.onSubmitForm} />
+            </form>
           </div>
         </div>
       </div>
     );
   }
 }
+
+AuthPage.propTypes = {
+  username: PropTypes.string,
+  password: PropTypes.string,
+  onChangeUsername: PropTypes.func,
+  onChangePassword: PropTypes.func,
+  onSubmitForm: PropTypes.func,
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
+    onChangePassword: evt => dispatch(changePassword(evt.target.value)),
+    onSubmitForm: evt => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(authenticate());
+    },
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  username: makeSelectUsername(),
+  password: makeSelectPassword(),
+  authenticating: makeSelectAuthenticating(),
+  error: makeSelectError(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'auth', reducer });
+const withSaga = injectSaga({ key: 'auth', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(AuthPage);
