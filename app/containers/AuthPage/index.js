@@ -25,7 +25,7 @@ import injectSaga from 'utils/injectSaga';
 
 export class AuthPage extends React.Component {
   render() {
-    const { authenticating, error, username, password } = this.props;
+    const { authenticating, error, username } = this.props;
 
     return (
       <div>
