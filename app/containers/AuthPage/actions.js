@@ -22,7 +22,7 @@ export function authenticate(username, password) {
 }
 
 /**
- * Dispatched when the repositories are loaded by the request saga
+ * Dispatched when the authentication is successful by the request saga
  *
  * @param  {cookie} cookie The repository data
  * @param  {int} userId The current username
@@ -39,7 +39,7 @@ export function authenticationSuccess(cookie, userId ) {
 }
 
 /**
- * Dispatched when loading the repositories fails
+ * Dispatched when authentication fails
  *
  * @param  {object} error The error
  *
