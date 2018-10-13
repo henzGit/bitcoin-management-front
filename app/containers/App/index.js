@@ -14,7 +14,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
+import MenuBar from 'containers/MenuBar/Loadable';
 import Footer from 'components/Footer';
 import TestPage from 'containers/TestPage/Loadable';
 import AuthPage from 'containers/AuthPage/Loadable';
@@ -42,7 +42,7 @@ export const PublicLayout = () => (
 
 export const ProtectedLayout = () => (
   <div>
-    <Header />
+    <MenuBar />
     <Switch>
       <Route exact path="/app/" component={HomePage} />
       <Route path="/app/features" component={FeaturePage} />
