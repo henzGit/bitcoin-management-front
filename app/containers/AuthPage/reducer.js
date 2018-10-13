@@ -9,7 +9,9 @@ import { CHANGE_PASSWORD, CHANGE_USERNAME } from './constants';
 
 export const initialState = fromJS({
   username: '',
-  password: ''
+  password: '',
+  authenticating: false,
+  error: false,
 });
 
 function AuthPageReducer(state = initialState, action) {
@@ -20,8 +22,8 @@ function AuthPageReducer(state = initialState, action) {
       return state.set('password', action.password);
     case AUTHENTICATE:
       return state
-        .set('username', action.username)
-        .set('password', action.password);
+        .set('authenticating', true)
+        .set('error', false);
     default:
       return state;
   }
