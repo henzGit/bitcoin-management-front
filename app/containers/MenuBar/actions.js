@@ -1,14 +1,13 @@
 /*
  *
- * LanguageProvider actions
+ * MenuBar actions
  *
  */
 
-import { CHANGE_LOCALE } from './constants';
+import { LOGOUT } from './constants';
 
-export function changeLocale(languageLocale) {
+export function logout() {
   return {
-    type: CHANGE_LOCALE,
-    locale: languageLocale,
+    type: LOGOUT,
   };
 }
