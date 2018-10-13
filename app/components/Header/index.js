@@ -12,15 +12,17 @@ class Header extends React.Component {
         {
           label: 'Home',
           icon: 'pi pi-fw pi-home',
-          url: '/',
+          url: '/app/',
         },
         {
           label: 'Coin',
           icon: 'pi pi-fw pi-star',
+          url: '/app/coin/',
         },
         {
           label: 'Profile',
           icon: 'pi pi-fw pi-user',
+          url: '/app/profile/',
         },
       ],
     };
