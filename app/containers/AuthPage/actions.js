@@ -16,11 +16,9 @@ import { CHANGE_USERNAME, CHANGE_PASSWORD } from './constants';
  *
  * @return {object} An action object with a type of AUTHENTICATE
  */
-export function authenticate(username, password) {
+export function authenticate() {
   return {
     type: AUTHENTICATE,
-    username,
-    password
   };
 }
 

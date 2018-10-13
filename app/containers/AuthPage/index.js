@@ -53,9 +53,7 @@ export class AuthPage extends React.Component {
               />
               <h3></h3>
               <Button label="Login"
-                      onClick={
-                        (evt) => this.props.onSubmitForm(evt, username, password)
-                      }
+                      onClick={this.props.onSubmitForm}
               />
             </form>
           </div>
@@ -77,9 +75,9 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
     onChangePassword: evt => dispatch(changePassword(evt.target.value)),
-    onSubmitForm: (evt, username, password) => {
+    onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(authenticate(username, password));
+      dispatch(authenticate());
     },
   };
 }
