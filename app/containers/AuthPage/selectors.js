@@ -13,4 +13,16 @@ const makeSelectUsername = () =>
 const makeSelectPassword = () =>
   createSelector(selectAuth, authState => authState.get('password'));
 
-export { selectAuth, makeSelectUsername, makeSelectPassword};
+const makeSelectAuthenticating = () =>
+  createSelector(selectAuth, authState => authState.get('authenticating'));
+
+const makeSelectError = () =>
+  createSelector(selectAuth, authState => authState.get('error'));
+
+export {
+  selectAuth,
+  makeSelectUsername,
+  makeSelectPassword,
+  makeSelectAuthenticating,
+  makeSelectError
+};
