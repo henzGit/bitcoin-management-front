@@ -4,7 +4,7 @@
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { AUTHENTICATE } from './constants';
-import { authenticationError, authenticationSuccess } from  './actions';
+import { authenticationError, authenticationSuccess } from './actions';
 
 import request from 'utils/request';
 import { makeSelectUsername, makeSelectPassword } from './selectors';
@@ -13,7 +13,6 @@ import { makeSelectUsername, makeSelectPassword } from './selectors';
  * Auth API request/response handler
  */
 export function* callAuthApi() {
-
   const username = yield select(makeSelectUsername());
   const password = yield select(makeSelectPassword());
   const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;

@@ -4,7 +4,8 @@
  *
  */
 import { fromJS } from 'immutable';
-import { AUTHENTICATE } from './constants';
+import { AUTHENTICATE, AUTHENTICATION_SUCCESS, AUTHENTICATION_ERROR }
+  from './constants';
 import { CHANGE_PASSWORD, CHANGE_USERNAME } from './constants';
 
 export const initialState = fromJS({
@@ -24,6 +25,15 @@ function AuthPageReducer(state = initialState, action) {
       return state
         .set('authenticating', true)
         .set('error', false);
+    case AUTHENTICATION_SUCCESS:
+      return state
+        .set('authenticating', false)
+        .set('error', false);
+    case AUTHENTICATION_ERROR:
+      return state
+        .set('authenticating', false)
+        .set('error', action.error);
+
     default:
       return state;
   }
