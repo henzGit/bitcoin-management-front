@@ -55,8 +55,8 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Bitcoin Management Platform"
+        defaultTitle="Bitcoin Management Platform"
       >
         <meta
           name="description"
