@@ -12,6 +12,7 @@ import {
 import request from 'utils/request';
 import { makeSelectUsername, makeSelectPassword } from './selectors';
 import { push } from 'react-router-redux';
+import { updateUserData}  from '../App/actions';
 
 /**
  * Auth API request/response handler
@@ -19,12 +20,14 @@ import { push } from 'react-router-redux';
 export function* callAuthApi() {
   const username = yield select(makeSelectUsername());
   const password = yield select(makeSelectPassword());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  const requestURL =
+    `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
 
   try {
     // Call our request helper (see 'utils/request')
     const response = yield call(request, requestURL);
     yield put(authenticationSuccess());
+    yield put(updateUserData(true, 1, 'test_cookie'));
     yield put(push('/app'));
   } catch (err) {
     yield put(authenticationError(err));

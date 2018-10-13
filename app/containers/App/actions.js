@@ -15,4 +15,24 @@
  *    }
  */
 
+import {UPDATE_USER_DATA} from "./constants";
+
+/**
+ * Changes the input field of the form
+ *
+ * @param  {boolean} isAuthenticated Status indicating if user is
+ *  already authenticated or not
+ * @param  {int} userId Id of current user
+ * @param  {string} cookie Cookie String of current user
+ *
+ * @return {object}    An action object with a type of UPDATE_USER_DATA
+ */
+export function updateUserData(isAuthenticated, userId, cookie) {
+  return {
+    type: UPDATE_USER_DATA,
+    isAuthenticated,
+    userId,
+    cookie
+  };
+}
 
