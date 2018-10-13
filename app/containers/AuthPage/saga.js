@@ -7,7 +7,6 @@ import { AUTHENTICATE } from './constants';
 import {
   authenticationError,
   authenticationSuccess,
-  redirectToHome
 } from './actions';
 
 import request from 'utils/request';

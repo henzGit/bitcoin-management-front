@@ -77,13 +77,3 @@ export function changePassword(password) {
   };
 }
 
-/**
- * Dispatched when authentication is successful
- *
- * @return {object}
- *  An action object with a type of REDIRECT_TO_HOME
- */
-export function redirectToHome() {
-  return { type: REDIRECT_TO_HOME };
-}
-

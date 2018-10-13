@@ -9,5 +9,4 @@ export const CHANGE_PASSWORD = 'app/AuthPage/CHANGE_PASSWORD';
 export const AUTHENTICATE = 'app/AuthPage/AUTHENTICATE';
 export const AUTHENTICATION_SUCCESS = 'app/AuthPage/AUTHENTICATION_SUCCESS';
 export const AUTHENTICATION_ERROR = 'app/AuthPage/AUTHENTICATION_ERROR';
-export const REDIRECT_TO_HOME = 'app/AuthPage/REDIRECT_TO_HOME';
 
