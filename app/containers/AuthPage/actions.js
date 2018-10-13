@@ -3,15 +3,53 @@
  * AuthPage actions
  *
  */
-
-import { AUTHENTICATE } from './constants';
+import {
+  AUTHENTICATE, AUTHENTICATION_SUCCESS, AUTHENTICATION_ERROR
+} from './constants';
 import { CHANGE_USERNAME, CHANGE_PASSWORD } from './constants';
 
+/**
+ * Authenticate user, this action starts the request saga
+ *
+ * @return {object} An action object with a type of AUTHENTICATE
+ */
 export function authenticate(username, password) {
   return {
     type: AUTHENTICATE,
     username,
     password
+  };
+}
+
+/**
+ * Dispatched when the repositories are loaded by the request saga
+ *
+ * @param  {cookie} cookie The repository data
+ * @param  {int} userId The current username
+ *
+ * @return {object}
+ *  An action object with a type of AUTHENTICATION_SUCCESS
+ */
+export function authenticationSuccess(cookie, userId ) {
+  return {
+    type: AUTHENTICATION_SUCCESS,
+    cookie,
+    userId,
+  };
+}
+
+/**
+ * Dispatched when loading the repositories fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object}
+ *  An action object with a type of AUTHENTICATION_ERROR passing the error
+ */
+export function authenticationError(error) {
+  return {
+    type: AUTHENTICATION_ERROR,
+    error,
   };
 }
 
