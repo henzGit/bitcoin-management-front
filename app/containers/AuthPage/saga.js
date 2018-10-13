@@ -4,10 +4,15 @@
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { AUTHENTICATE } from './constants';
-import { authenticationError, authenticationSuccess } from './actions';
+import {
+  authenticationError,
+  authenticationSuccess,
+  redirectToHome
+} from './actions';
 
 import request from 'utils/request';
 import { makeSelectUsername, makeSelectPassword } from './selectors';
+import { push } from 'react-router-redux';
 
 /**
  * Auth API request/response handler
@@ -21,6 +26,7 @@ export function* callAuthApi() {
     // Call our request helper (see 'utils/request')
     const response = yield call(request, requestURL);
     yield put(authenticationSuccess());
+    yield put(push('/app'));
   } catch (err) {
     yield put(authenticationError(err));
   }
