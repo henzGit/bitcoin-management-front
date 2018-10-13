@@ -11,16 +11,22 @@
  */
 
 import { fromJS } from 'immutable';
+import { UPDATE_USER_DATA } from "./constants";
 
 // The initial state of the App
 const initialState = fromJS({
   isAuthenticated: false,
-  userId: 0,
+  userId: null,
   cookie: ''
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case UPDATE_USER_DATA:
+      return state
+        .set('isAuthenticated', action.isAuthenticated)
+        .set('userId', action.userId)
+        .set('cookie', action.cookie);
     default:
       return state;
   }
