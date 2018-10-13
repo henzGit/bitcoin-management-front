@@ -16,6 +16,7 @@
  */
 
 import {UPDATE_USER_DATA} from "./constants";
+import { LOGOUT } from './constants';
 
 /**
  * Changes the input field of the form
@@ -37,6 +38,17 @@ export function updateUserData (
     userId,
     cookie,
     currentUserName
+  };
+}
+
+/**
+ * Logout from application
+ *
+ * @return {object}    An action object with a type of LOGOUT
+ */
+export function logout() {
+  return {
+    type: LOGOUT,
   };
 }
 
