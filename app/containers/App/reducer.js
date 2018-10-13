@@ -11,7 +11,7 @@
  */
 
 import { fromJS } from 'immutable';
-import { UPDATE_USER_DATA } from "./constants";
+import { UPDATE_USER_DATA, LOGOUT } from "./constants";
 
 // The initial state of the App
 const initialState = fromJS({
@@ -29,6 +29,8 @@ function appReducer(state = initialState, action) {
         .set('userId', action.userId)
         .set('cookie', action.cookie)
         .set('currentUserName', action.currentUserName);
+    case LOGOUT:
+      return initialState;
     default:
       return state;
   }
