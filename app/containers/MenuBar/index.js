@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { logout } from '../App/actions';
+import { createStructuredSelector } from "reselect";
+import { makeSelectUsername } from "../HomePage/selectors";
 
 /* eslint-disable react/prefer-stateless-function */
-class Header extends React.Component {
+class MenuBar extends React.Component {
   constructor() {
     super();
-
     this.state = {
       items: [
         {
@@ -37,7 +41,8 @@ class Header extends React.Component {
               label="Logout"
               icon="pi pi-power-off"
               style={{ marginLeft: 4 }}
-            />
+              onClick={this.props.onLogoutButtonClick}
+          />
           </Menubar>
         </div>
       </div>
@@ -45,4 +50,20 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+MenuBar.propTypes = {
+  onLogoutButtonClick: PropTypes.func,
+};
+
+const mapStateToProps = createStructuredSelector({
+  username: makeSelectUsername(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onLogoutButtonClick: () => dispatch(logout()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuBar);
+
+
