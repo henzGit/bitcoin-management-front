@@ -25,6 +25,8 @@ import injectSaga from 'utils/injectSaga';
 
 export class AuthPage extends React.Component {
   render() {
+    const { authenticating, error, username, password } = this.props;
+
     return (
       <div>
         <div className="content-section introduction">
@@ -41,7 +43,7 @@ export class AuthPage extends React.Component {
             <form >
               <h3 className="first">Username</h3>
               <InputText
-                value={this.props.username}
+                value={username}
                 onChange={this.props.onChangeUsername}
               />
               <h3 className="first">Password</h3>
@@ -50,7 +52,11 @@ export class AuthPage extends React.Component {
                 onChange={this.props.onChangePassword}
               />
               <h3></h3>
-              <Button label="Login" onClick={this.props.onSubmitForm} />
+              <Button label="Login"
+                      onClick={
+                        (evt) => this.props.onSubmitForm(evt, username, password)
+                      }
+              />
             </form>
           </div>
         </div>
@@ -71,9 +77,9 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
     onChangePassword: evt => dispatch(changePassword(evt.target.value)),
-    onSubmitForm: evt => {
+    onSubmitForm: (evt, username, password) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(authenticate());
+      dispatch(authenticate(username, password));
     },
   };
 }
