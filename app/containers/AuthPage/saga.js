@@ -20,7 +20,7 @@ export function* callAuthApi() {
   try {
     // Call our request helper (see 'utils/request')
     const response = yield call(request, requestURL);
-    yield put(authenticationSuccess('test_cookie', 'test_id'));
+    yield put(authenticationSuccess());
   } catch (err) {
     yield put(authenticationError(err));
   }

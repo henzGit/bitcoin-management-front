@@ -27,17 +27,12 @@ export function authenticate(username, password) {
 /**
  * Dispatched when the authentication is successful by the request saga
  *
- * @param  {cookie} cookie The repository data
- * @param  {int} userId The current username
- *
  * @return {object}
  *  An action object with a type of AUTHENTICATION_SUCCESS
  */
-export function authenticationSuccess(cookie, userId ) {
+export function authenticationSuccess() {
   return {
     type: AUTHENTICATION_SUCCESS,
-    cookie,
-    userId,
   };
 }
 
