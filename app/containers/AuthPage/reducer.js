@@ -33,7 +33,6 @@ function AuthPageReducer(state = initialState, action) {
       return state
         .set('authenticating', false)
         .set('error', action.error);
-
     default:
       return state;
   }
