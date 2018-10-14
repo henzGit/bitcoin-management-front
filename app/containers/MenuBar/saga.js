@@ -8,8 +8,7 @@ import { Cookies } from 'react-cookie';
  */
 export function* clearCookies() {
   const cookies = new Cookies();
-  cookies.remove('authId');
-  cookies.remove('currentUserName');
+  cookies.remove('siteCookie');
   yield put(push('/auth'));
 }
 
