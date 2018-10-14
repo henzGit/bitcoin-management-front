@@ -58,16 +58,7 @@ export class HomePage extends React.PureComponent {
             </p>
           </CenteredSection>
           <Section>
-            <div className="content-section introduction">
-              <div className="feature-intro">
-                <h1>PieChart</h1>
-                <p>A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
-              </div>
-            </div>
-
-            <div className="content-section implementation">
-              <Chart type="pie" data={chartData} />
-            </div>
+            <Chart type="pie" data={chartData} />
           </Section>
         </div>
       </article>
