@@ -9,4 +9,5 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 export const LOAD_USER_DATA = 'app/HomePage/LOAD_USER_DATA';
-
+export const LOAD_USER_DATA_SUCCESS = 'app/HomePage/LOAD_USER_DATA_SUCCESS';
+export const LOAD_USER_DATA_ERROR = 'app/HomePage/LOAD_USER_DATA_ERROR';
