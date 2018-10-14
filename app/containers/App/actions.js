@@ -21,23 +21,14 @@ import { LOGOUT } from './constants';
 /**
  * Changes the input field of the form
  *
- * @param  {boolean} isAuthenticated Status indicating if user is
- *  already authenticated or not
- * @param  {int} userId Id of current user
- * @param  {string} cookie Cookie String of current user
- * @param  {string} currentUserName Full name of current user
+ * @param  {object} userData Object containing user data
  *
  * @return {object}    An action object with a type of UPDATE_USER_DATA
  */
-export function updateUserData (
-  isAuthenticated, userId, cookie, currentUserName
-) {
+export function updateUserData (userData) {
   return {
     type: UPDATE_USER_DATA,
-    isAuthenticated,
-    userId,
-    cookie,
-    currentUserName
+    userData
   };
 }
 
