@@ -16,7 +16,7 @@
  */
 
 
-import {LOAD_USER_DATA} from "./constants";
+import {LOAD_USER_DATA, LOAD_USER_DATA_ERROR, LOAD_USER_DATA_SUCCESS} from "./constants";
 
 /**
  * Load corresponding user data
@@ -26,5 +26,27 @@ import {LOAD_USER_DATA} from "./constants";
 export function loadUserData() {
   return {
     type: LOAD_USER_DATA,
+  };
+}
+
+/**
+ * Dispatched when the load user data is successful by the request saga
+ *
+ * @return {object}    An action object with a type of LOAD_USER_DATA_SUCCESS
+ */
+export function loadUserDataSuccess() {
+  return {
+    type: LOAD_USER_DATA_SUCCESS,
+  };
+}
+
+/**
+ * Dispatched when the load user data fails by the request saga
+ *
+ * @return {object}    An action object with a type of LOAD_USER_DATA_ERROR
+ */
+export function loadUserDataError() {
+  return {
+    type: LOAD_USER_DATA_ERROR,
   };
 }
