@@ -32,12 +32,11 @@ export function* callAuthApi() {
 
     const cookies = new Cookies();
     const cookieValues = {
-      currentUserName: 'henz_great',
-      authId: 'rwerwrerawrw'
-    };
-    cookies.set('authId', cookieValues.authId);
-    cookies.set('currentUserName', cookieValues.currentUserName);
+      userId: 1,
+      authId: 'rwerwrerawrw',
 
+    };
+    cookies.set('siteCookie', cookieValues);
     yield put(push('/app'));
   } catch (err) {
     yield put(authenticationError(err));
