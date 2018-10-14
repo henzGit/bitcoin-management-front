@@ -35,6 +35,7 @@ export const PublicLayout = () => (
     <Switch>
       <Route path="/test" component={TestPage} />
       <Route path="/auth" component={AuthPage} />
+      <Route path="/logout" component={LogoutPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
   </div>
