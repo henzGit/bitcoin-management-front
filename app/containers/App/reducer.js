@@ -17,7 +17,6 @@ import { UPDATE_USER_DATA, LOGOUT } from "./constants";
 const initialState = fromJS({
   isAuthenticated: false,
   userId: null,
-  cookie: '',
   currentUserName: ''
 });
 
@@ -25,10 +24,9 @@ function AppReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_DATA:
       return state
-        .set('isAuthenticated', action.isAuthenticated)
-        .set('userId', action.userId)
-        .set('cookie', action.cookie)
-        .set('currentUserName', action.currentUserName);
+        .set('isAuthenticated', action.userData.isAuthenticated)
+        .set('userId', action.userData.userId)
+        .set('currentUserName', action.userData.currentUserName);
     case LOGOUT:
       return initialState;
     default:
