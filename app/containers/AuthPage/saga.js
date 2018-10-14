@@ -13,6 +13,7 @@ import request from 'utils/request';
 import { makeSelectUsername, makeSelectPassword } from './selectors';
 import { push } from 'react-router-redux';
 import { updateUserData}  from '../App/actions';
+import { Cookies } from 'react-cookie';
 
 /**
  * Auth API request/response handler
@@ -28,6 +29,15 @@ export function* callAuthApi() {
     const response = yield call(request, requestURL);
     yield put(authenticationSuccess());
     yield put(updateUserData(true, 1, 'test_cookie', 'henz great'));
+
+    const cookies = new Cookies();
+    const cookieValues = {
+      currentUserName: 'henz_great',
+      authId: 'rwerwrerawrw'
+    };
+    cookies.set('authId', cookieValues.authId);
+    cookies.set('currentUserName', cookieValues.currentUserName);
+
     yield put(push('/app'));
   } catch (err) {
     yield put(authenticationError(err));
