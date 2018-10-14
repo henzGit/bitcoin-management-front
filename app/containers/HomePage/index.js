@@ -29,9 +29,14 @@ import { makeSelectCurrentUserName } from '../App/selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Chart } from 'primereact/chart';
+import { loadUserData } from "./actions";
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
+  componentDidMount() {
+    this.props.onPageLoad();
+  }
+
   render() {
     const data = {
       labels: ['A','B','C'],
@@ -94,6 +99,7 @@ HomePage.propTypes = {
 
 export function mapDispatchToProps(dispatch) {
   return {
+    onPageLoad: () => dispatch(loadUserData()),
   };
 }
 
