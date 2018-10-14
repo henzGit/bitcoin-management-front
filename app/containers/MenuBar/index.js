@@ -3,17 +3,13 @@ import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import { logout } from '../App/actions';
 import { createStructuredSelector } from "reselect";
 import { push } from 'react-router-redux';
 import { makeSelectItems } from "./selectors";
 import {compose} from "redux";
 import reducer from "./reducer";
-import saga from "./saga";
 import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
 
-/* eslint-disable react/prefer-stateless-function */
 class MenuBar extends React.Component {
   render() {
     const stateItems = this.props.items.toJS() ;
@@ -46,7 +42,7 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     onLogoutButtonClick: () => {
-      dispatch(logout());
+      dispatch(push('/logout'));
     },
   };
 }
@@ -57,10 +53,8 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'menu', reducer });
-const withSaga = injectSaga({ key: 'menu', saga });
 
 export default compose(
   withReducer,
   withConnect,
-  withSaga
 )(MenuBar);
