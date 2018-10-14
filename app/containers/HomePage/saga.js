@@ -42,19 +42,21 @@ export function* callApiGetUserDataForHomePage() {
       currentUserName: 'great Henz'
     };
     const chartData = {
-      labels: ['A','B','C'],
+      labels: ['BTC','LTC','MONA', 'XEM'],
       datasets: [
         {
-          data: [300, 50, 100],
+          data: [300, 50, 100, 75],
           backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
+            "#ff6384",
+            "#36a2eb",
+            "#ffce56",
+            "#e3eaa7"
           ],
           hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
+            "#ff6384",
+            "#36a2eb",
+            "#ffce56",
+            "#e3eaa7"
           ]
         }]
     };
