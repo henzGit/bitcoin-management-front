@@ -18,12 +18,12 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
-
 import Section from './styledComponents/Section';
 import CenteredSection from './styledComponents/CenteredSection';
 import RightSection from './styledComponents/RightSection';
 import messages from './messages';
 import { makeSelectCurrentUserName } from '../App/selectors';
+import { makeSelectChartData } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Chart } from 'primereact/chart';
@@ -31,28 +31,12 @@ import { loadUserData } from "./actions";
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  componentDidMount() {
+  componentWillMount() {
     this.props.onPageLoad();
   }
 
   render() {
-    const data = {
-      labels: ['A','B','C'],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
+    const chartData = this.props.chartData;
 
     return (
       <article>
@@ -82,7 +66,7 @@ export class HomePage extends React.PureComponent {
             </div>
 
             <div className="content-section implementation">
-              <Chart type="pie" data={data} />
+              <Chart type="pie" data={chartData} />
             </div>
           </Section>
         </div>
@@ -102,7 +86,8 @@ export function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUserName: makeSelectCurrentUserName()
+  currentUserName: makeSelectCurrentUserName(),
+  chartData: makeSelectChartData()
 });
 
 const withConnect = connect(
