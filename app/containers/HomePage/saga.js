@@ -41,8 +41,24 @@ export function* callApiGetUserDataForHomePage() {
       userId: 1,
       currentUserName: 'great Henz'
     };
-
-    yield put(loadUserDataSuccess());
+    const chartData = {
+      labels: ['A','B','C'],
+      datasets: [
+        {
+          data: [300, 50, 100],
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ]
+        }]
+    };
+    yield put(loadUserDataSuccess(chartData));
     yield put(updateUserData(userData));
   } catch (err) {
     yield put(loadUserDataError(err));

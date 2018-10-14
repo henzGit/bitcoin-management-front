@@ -36,11 +36,13 @@ export function loadUserData() {
 /**
  * Dispatched when the load user data is successful by the request saga
  *
+ * @param  {object} chartData User data
  * @return {object}    An action object with a type of LOAD_USER_DATA_SUCCESS
  */
-export function loadUserDataSuccess() {
+export function loadUserDataSuccess(chartData) {
   return {
     type: LOAD_USER_DATA_SUCCESS,
+    chartData
   };
 }
 
@@ -48,7 +50,6 @@ export function loadUserDataSuccess() {
  * Dispatched when the load user data fails by the request saga
  *
  * @param  {object} error The error
-
  * @return {object}    An action object with a type of LOAD_USER_DATA_ERROR
  */
 export function loadUserDataError(error) {
