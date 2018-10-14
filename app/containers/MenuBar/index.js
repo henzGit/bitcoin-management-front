@@ -14,9 +14,7 @@ import {compose} from "redux";
 /* eslint-disable react/prefer-stateless-function */
 class MenuBar extends React.Component {
   render() {
-
     const stateItems = this.props.items.toJS() ;
-
     return (
       <div>
         <div className="content-section implementation">
