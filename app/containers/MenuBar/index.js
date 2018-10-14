@@ -10,7 +10,7 @@ import {compose} from "redux";
 import reducer from "./reducer";
 import injectReducer from 'utils/injectReducer';
 
-class MenuBar extends React.Component {
+class MenuBar extends React.PureComponent {
   render() {
     const stateItems = this.props.items.toJS() ;
     return (

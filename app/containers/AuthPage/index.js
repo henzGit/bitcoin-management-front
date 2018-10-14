@@ -23,7 +23,7 @@ import saga from './saga';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
-export class AuthPage extends React.Component {
+export class AuthPage extends React.PureComponent {
   render() {
     const { authenticating, error, username } = this.props;
 
