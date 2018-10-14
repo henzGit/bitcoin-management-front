@@ -51,27 +51,23 @@ export const ProtectedLayout = () => (
   </div>
 );
 
-export class App extends React.PureComponent {
-  render() {
-    return (
-      <AppWrapper>
-        <Helmet
-          titleTemplate="%s - Bitcoin Management Platform"
-          defaultTitle="Bitcoin Management Platform"
-        >
-          <meta
-            name="description"
-            content="Front end for bitcoin management platform"
-          />
-        </Helmet>
+export default function App() {
+  return (
+    <AppWrapper>
+      <Helmet
+        titleTemplate="%s - Bitcoin Management Platform"
+        defaultTitle="Bitcoin Management Platform"
+      >
+        <meta
+          name="description"
+          content="Front end for bitcoin management platform"
+        />
+      </Helmet>
 
-        <Switch>
-          <Route path="/app" component={ProtectedLayout} />
-          <Route path="/" component={PublicLayout} />
-        </Switch>
-      </AppWrapper>
-    )
-  };
+      <Switch>
+        <Route path="/app" component={ProtectedLayout} />
+        <Route path="/" component={PublicLayout} />
+      </Switch>
+    </AppWrapper>
+  );
 }
-
-export default App;
