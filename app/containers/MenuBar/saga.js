@@ -1,6 +1,5 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { LOGOUT } from '../App/constants';
-
 import { push } from 'react-router-redux';
 import { Cookies } from 'react-cookie';
 
