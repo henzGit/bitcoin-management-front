@@ -21,7 +21,7 @@ const initialState = fromJS({
   currentUserName: ''
 });
 
-function appReducer(state = initialState, action) {
+function AppReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_DATA:
       return state
@@ -36,4 +36,4 @@ function appReducer(state = initialState, action) {
   }
 }
 
-export default appReducer;
+export default AppReducer;
