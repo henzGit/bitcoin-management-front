@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { logout } from '../App/actions';
 import { createStructuredSelector } from "reselect";
@@ -7,17 +6,13 @@ import {compose} from "redux";
 import saga from "./saga";
 import injectSaga from 'utils/injectSaga';
 
-/* eslint-disable react/prefer-stateless-function */
-class LogoutPage extends React.Component {
-
+class LogoutPage extends React.PureComponent {
   componentWillMount(){
     this.props.dispatchLogoutAction();
   }
 
   render() {
-    return (
-      <div></div>
-    );
+    return (null);
   }
 }
 
