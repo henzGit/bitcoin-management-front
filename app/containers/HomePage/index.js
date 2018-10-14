@@ -3,7 +3,6 @@
  *
  * This is the first thing users see of our App, at the '/' route
  */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -11,7 +10,6 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
@@ -118,4 +116,5 @@ const withSaga = injectSaga({ key: 'home', saga });
 export default compose(
   withReducer,
   withConnect,
+  withSaga
 )(HomePage);
