@@ -21,15 +21,10 @@ import {LOAD_USER_DATA} from "./constants";
 /**
  * Load corresponding user data
  *
- * @param  {int} userId Id of current user
- * @param  {string} authToken Authentication token of current user
- *
  * @return {object}    An action object with a type of LOAD_USER_DATA
  */
-export function loadUserData(userId, authToken) {
+export function loadUserData() {
   return {
     type: LOAD_USER_DATA,
-    userId,
-    authToken
   };
 }
