@@ -15,18 +15,21 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+
+import {LOAD_USER_DATA} from "./constants";
 
 /**
- * Changes the input field of the form
+ * Load corresponding user data
  *
- * @param  {name} name The new text of the input field
+ * @param  {int} userId Id of current user
+ * @param  {string} authToken Authentication token of current user
  *
- * @return {object}    An action object with a type of CHANGE_USERNAME
+ * @return {object}    An action object with a type of LOAD_USER_DATA
  */
-export function changeUsername(name) {
+export function loadUserData(userId, authToken) {
   return {
-    type: CHANGE_USERNAME,
-    name,
+    type: LOAD_USER_DATA,
+    userId,
+    authToken
   };
 }
