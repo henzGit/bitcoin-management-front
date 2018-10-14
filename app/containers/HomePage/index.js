@@ -20,20 +20,36 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
-import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
 import Section from './Section';
 import messages from './messages';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { Chart } from 'primereact/chart';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
   render() {
+    const data = {
+      labels: ['A','B','C'],
+      datasets: [
+        {
+          data: [300, 50, 100],
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ]
+        }]
+    };
+
     return (
       <article>
         <Helmet>
@@ -58,23 +74,34 @@ export class HomePage extends React.PureComponent {
             </H2>
           </Section>
         </div>
+
+        <div>
+          <div className="content-section introduction">
+            <div className="feature-intro">
+              <h1>PieChart</h1>
+              <p>A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
+            </div>
+          </div>
+
+          <div className="content-section implementation">
+            <Chart type="pie" data={data} />
+          </div>
+        </div>
+
       </article>
     );
   }
 }
 
 HomePage.propTypes = {
-  username: PropTypes.string,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername(),
 });
 
 const withConnect = connect(
