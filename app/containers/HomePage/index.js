@@ -20,11 +20,12 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
-import CenteredSection from './CenteredSection';
-import Section from './Section';
+
+import Section from './styledComponents/Section';
+import CenteredSection from './styledComponents/CenteredSection';
+import RightSection from './styledComponents/RightSection';
 import messages from './messages';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { makeSelectCurrentUserName } from '../App/selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Chart } from 'primereact/chart';
@@ -60,6 +61,7 @@ export class HomePage extends React.PureComponent {
           />
         </Helmet>
         <div>
+          <RightSection>Welcome, {this.props.currentUserName} </RightSection>
           <CenteredSection>
             <H2>
               <FormattedMessage {...messages.startProjectHeader} />
@@ -69,17 +71,15 @@ export class HomePage extends React.PureComponent {
             </p>
           </CenteredSection>
           <Section>
-            <div>
-              <div className="content-section introduction">
-                <div className="feature-intro">
-                  <h1>PieChart</h1>
-                  <p>A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
-                </div>
+            <div className="content-section introduction">
+              <div className="feature-intro">
+                <h1>PieChart</h1>
+                <p>A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
               </div>
+            </div>
 
-              <div className="content-section implementation">
-                <Chart type="pie" data={data} />
-              </div>
+            <div className="content-section implementation">
+              <Chart type="pie" data={data} />
             </div>
           </Section>
         </div>
@@ -89,6 +89,7 @@ export class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
+  currentUserName: PropTypes.string,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -97,6 +98,7 @@ export function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
+  currentUserName: makeSelectCurrentUserName()
 });
 
 const withConnect = connect(
