@@ -34,7 +34,6 @@ export function* callAuthApi() {
     const cookieValues = {
       userId: 1,
       authId: 'rwerwrerawrw',
-
     };
     cookies.set('siteCookie', cookieValues);
     yield put(push('/app'));

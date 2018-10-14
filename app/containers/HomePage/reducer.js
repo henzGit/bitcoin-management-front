@@ -11,6 +11,7 @@
  */
 import { fromJS } from 'immutable';
 import {LOAD_USER_DATA} from "./constants";
+import {LOAD_USER_DATA_ERROR} from "./constants";
 
 // The initial state of the App
 export const initialState = fromJS({
@@ -23,6 +24,10 @@ function homeReducer(state = initialState, action) {
     case LOAD_USER_DATA:
       return state
         .set('isLoadingUserData', true);
+    case LOAD_USER_DATA_ERROR:
+      return state
+        .set('isLoadingUserData', false)
+        .set('error', action.error);
     default:
       return state;
   }
