@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for FeaturePage
+ * Asynchronously loads the component for AuthPage
  */
 import Loadable from 'react-loadable';
 
