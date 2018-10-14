@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { logout } from '../App/actions';
 import { createStructuredSelector } from "reselect";
-import { makeSelectUsername } from "../HomePage/selectors";
+import { push } from 'react-router-redux';
 
 /* eslint-disable react/prefer-stateless-function */
 class MenuBar extends React.Component {
@@ -55,12 +55,15 @@ MenuBar.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername(),
+
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLogoutButtonClick: () => dispatch(logout()),
+    onLogoutButtonClick: () => {
+      dispatch(logout());
+      dispatch(push('/auth'));
+    },
   };
 }
 
