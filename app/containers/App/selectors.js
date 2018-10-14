@@ -15,6 +15,9 @@ const makeSelectCookie = () =>
 const makeSelectIsAuthenticated = () =>
   createSelector(selectGlobal, globalState => globalState.get('isAuthenticated'));
 
+const makeSelectCurrentUserName = () =>
+  createSelector(selectGlobal, globalState => globalState.get('currentUserName'));
+
 const makeSelectGlobal = () =>
   createSelector(selectGlobal, globalState => globalState);
 
@@ -23,5 +26,6 @@ export {
   makeSelectGlobal,
   makeSelectCookie,
   makeSelectIsAuthenticated,
-  makeSelectUserId
+  makeSelectUserId,
+  makeSelectCurrentUserName
 };
