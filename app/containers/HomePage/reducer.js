@@ -10,13 +10,19 @@
  *   return state.set('yourStateVariable', true);
  */
 import { fromJS } from 'immutable';
+import {LOAD_USER_DATA} from "./constants";
 
 // The initial state of the App
 export const initialState = fromJS({
+  isLoadingUserData: false,
+  errorLoadingUserData: null
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD_USER_DATA:
+      return state
+        .set('isLoadingUserData', true);
     default:
       return state;
   }
