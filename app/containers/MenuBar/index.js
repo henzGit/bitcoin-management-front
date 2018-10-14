@@ -6,41 +6,25 @@ import { connect } from 'react-redux';
 import { logout } from '../App/actions';
 import { createStructuredSelector } from "reselect";
 import { push } from 'react-router-redux';
+import reducer from "./reducer";
+import { makeSelectItems } from "./selectors";
+import injectReducer from 'utils/injectReducer';
+import {compose} from "redux";
 
 /* eslint-disable react/prefer-stateless-function */
 class MenuBar extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      items: [
-        {
-          label: 'Home',
-          icon: 'pi pi-fw pi-home',
-          url: '/app/',
-        },
-        {
-          label: 'Coin',
-          icon: 'pi pi-fw pi-star',
-          url: '/app/coin/',
-        },
-        {
-          label: 'Profile',
-          icon: 'pi pi-fw pi-user',
-          url: '/app/profile/',
-        },
-      ],
-    };
-  }
-
   render() {
+
+    const stateItems = this.props.items.toJS() ;
+
     return (
       <div>
         <div className="content-section implementation">
-          <Menubar model={this.state.items}>
+          <Menubar model={stateItems}>
             <Button
               label="Logout"
               icon="pi pi-power-off"
-              style={{ marginLeft: 4 }}
+              style={{ marginRight: 5 }}
               onClick={this.props.onLogoutButtonClick}
           />
           </Menubar>
@@ -52,10 +36,11 @@ class MenuBar extends React.Component {
 
 MenuBar.propTypes = {
   onLogoutButtonClick: PropTypes.func,
+  items: PropTypes.object
 };
 
 const mapStateToProps = createStructuredSelector({
-
+  items: makeSelectItems()
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -67,6 +52,14 @@ export function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuBar);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
+const withReducer = injectReducer({ key: 'menu', reducer });
 
+export default compose(
+  withReducer,
+  withConnect,
+)(MenuBar);
