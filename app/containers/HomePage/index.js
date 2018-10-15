@@ -28,6 +28,7 @@ import reducer from './reducer';
 import saga from './saga';
 import { Chart } from 'primereact/chart';
 import { loadUserData } from "./actions";
+import chartOptions from "./chartOptions";
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
@@ -37,7 +38,6 @@ export class HomePage extends React.PureComponent {
 
   render() {
     const chartData = this.props.chartData;
-
     return (
       <article>
         <Helmet>
@@ -58,7 +58,7 @@ export class HomePage extends React.PureComponent {
             </p>
           </CenteredSection>
           <Section>
-            <Chart type="pie" data={chartData} />
+            <Chart type="pie" data={chartData} options={chartOptions} />
           </Section>
         </div>
       </article>
