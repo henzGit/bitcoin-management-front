@@ -45,7 +45,7 @@ export function* callApiGetUserDataForHomePage() {
       labels: ['BTC','LTC','MONA', 'XEM'],
       datasets: [
         {
-          data: [300, 50, 100, 75],
+          data: [50, 20, 10, 20],
           backgroundColor: [
             "#ff6384",
             "#36a2eb",
@@ -60,6 +60,7 @@ export function* callApiGetUserDataForHomePage() {
           ]
         }]
     };
+
     yield put(loadUserDataSuccess(chartData));
     yield put(updateUserData(userData));
   } catch (err) {
