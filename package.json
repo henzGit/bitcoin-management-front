@@ -158,7 +158,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.4",
     "ip": "1.1.5",
-    "lodash": "4.17.10",
+    "lodash": "4.17.13",
     "minimist": "1.2.0",
     "primeicons": "^1.0.0-beta.10",
     "primereact": "^2.0.0-beta.8",
